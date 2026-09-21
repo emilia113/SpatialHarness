@@ -29,7 +29,7 @@ Motivated by this observation, we introduce **TwinSight**, a framework that cons
 ### Baseline
 
 <p align="center">
-  <video src="[BASELINE_VIDEO_URL](https://github.com/user-attachments/assets/dc9601b0-5a6a-4b9a-8003-afe046edb079)" width="720" controls></video>
+  <video src="https://github.com/user-attachments/assets/dc9601b0-5a6a-4b9a-8003-afe046edb079" width="720" controls></video>
 </p>
 
 ### TwinSight
