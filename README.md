@@ -23,41 +23,6 @@ Motivated by this observation, we introduce **TwinSight**, a framework that cons
 **Paper and code coming soon.**
 
 ---
-
-## Demo
-
-### Baseline
-
-<p align="center">
-  <video src="https://github.com/user-attachments/assets/dc9601b0-5a6a-4b9a-8003-afe046edb079" width="720" controls></video>
-</p>
-
-### TwinSight
-
-<p align="center"><b>Trial 1</b></p>
-<p align="center">
-  <video src="[TWINSIGHT_VIDEO_1_URL](https://github.com/user-attachments/assets/98217b2c-6769-4959-8a8d-40f61e2292f3)" width="720" controls></video>
-</p>
-
-<p align="center"><b>Trial 2</b></p>
-<p align="center">
-  <video src="[TWINSIGHT_VIDEO_2_URL](https://github.com/user-attachments/assets/b53b99b2-5615-4db0-af62-fdb41eab1cef)" width="720" controls></video>
-</p>
-
-<p align="center"><b>Trial 3</b></p>
-<p align="center">
-  <video src="[TWINSIGHT_VIDEO_3_URL](https://github.com/user-attachments/assets/309f1e84-61fc-48f2-90e2-5d4575c8cd22)" width="720" controls></video>
-</p>
-
----
-
-## TODO
-
-* [ ] Release the paper
-* [ ] Release the code
-
-
-
 ## Demo
 
 ### Baseline
@@ -77,3 +42,9 @@ https://github.com/user-attachments/assets/b53b99b2-5615-4db0-af62-fdb41eab1cef
 **Trial 3**
 
 https://github.com/user-attachments/assets/309f1e84-61fc-48f2-90e2-5d4575c8cd22
+---
+
+## TODO
+
+* [ ] Release the paper
+* [ ] Release the code
