@@ -1,6 +1,6 @@
 <h1><img src="docs/assets/spatialharness-logo.png" width="64" height="64" align="absmiddle" alt=""> SpatialHarness: Test-Time Spatial Scaffolding for Fine Robotic Manipulation</h1>
 
-[**Jiayu Wang**](https://github.com/emilia113)<sup>1</sup>, [**Yue Yu**](https://github.com/Yue-105)<sup>1</sup>, [**Bin Zhu**](https://binzhubz.github.io/)<sup>2</sup>, **Zhiyao Yang**<sup>3</sup>, [**Jingjing Chen**](https://jingjing1.github.io/)<sup>3,†</sup>
+[**Jiayu Wang**](https://github.com/emilia113)<sup>1</sup>, [**Yue Yu**](https://github.com/Yue-105)<sup>1</sup>, [**Bin Zhu**](https://binzhubz.github.io/)<sup>2</sup>, [**Zhiyao Yang**](https://github.com/zhiyaoy)<sup>3</sup>, [**Jingjing Chen**](https://jingjing1.github.io/)<sup>3,†</sup>
 
 <sup>1</sup> College of Computer Science and Artificial Intelligence, Fudan University<br>
 <sup>2</sup> Singapore Management University<br>
