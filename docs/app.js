@@ -32,7 +32,6 @@
     activeMain = name;
     markSelected(mainTabs, 'main', name);
     mainTabs.forEach(tab => { document.getElementById(tab.getAttribute('aria-controls')).hidden = tab.dataset.main !== name; });
-    text('[data-footer-page]', mainTabs.find(tab => tab.dataset.main === name).textContent.trim());
     status.textContent = copy.mainStatus(name);
   }
   function updateDemosCopy() {
