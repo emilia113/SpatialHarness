@@ -1,4 +1,4 @@
-<h1><img src="docs/assets/spatialharness-logo.png" width="48" height="48" align="absmiddle" alt=""> SpatialHarness: Test-Time Spatial Scaffolding for Fine Robotic Manipulation</h1>
+<h1><img src="docs/assets/spatialharness-logo.png" width="64" height="64" align="absmiddle" alt=""> SpatialHarness: Test-Time Spatial Scaffolding for Fine Robotic Manipulation</h1>
 
 **Jiayu Wang<sup>1</sup>, Yue Yu<sup>1</sup>, Bin Zhu<sup>2</sup>, Zhiyao Yang<sup>3</sup>, Jingjing Chen<sup>3,†</sup>**
 
@@ -10,7 +10,6 @@
 <p align="center">
   <a href="https://emilia113.github.io/SpatialHarness/"><img src="https://img.shields.io/badge/Project_Website-SpatialHarness-blue" alt="Project Website"></a>
   <a href="https://arxiv.org/abs/2610.12457"><img src="https://img.shields.io/badge/Paper-SpatialHarness-d32f2f.svg?logo=arXiv" alt="Paper on arXiv"></a>
-  <img src="https://img.shields.io/badge/Code-coming_soon-lightgrey?logo=github" alt="Code coming soon">
   <a href="https://huggingface.co/datasets/yzy05/SpatialHarness"><img src="https://img.shields.io/badge/Full_Results-SpatialHarness-blue?logo=huggingface&amp;logoColor=FFD21E" alt="Full Results on Hugging Face"></a>
 </p>
 
