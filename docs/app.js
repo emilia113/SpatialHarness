@@ -122,10 +122,9 @@
   document.querySelector('[data-go-demos]').addEventListener('click', () => {
     selectMain('demos'); document.getElementById('nav-demos').focus(); window.scrollTo({top: 0});
   });
-  if (data.codeUrl) {
-    const link = document.createElement('a'); link.className = 'resource'; link.href = data.codeUrl;
-    link.target = '_blank'; link.rel = 'noopener'; link.textContent = 'Code ↗';
-    document.querySelector('.resource.unavailable').replaceWith(link);
+  const codeLink = document.querySelector('[data-code-link]');
+  if (data.codeUrl && codeLink) {
+    codeLink.href = data.codeUrl;
   }
   document.addEventListener('visibilitychange', () => { if (document.hidden) pauseVideos(); });
   renderDemos();

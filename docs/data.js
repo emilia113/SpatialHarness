@@ -1,6 +1,6 @@
 window.SPATIALHARNESS = {
   "displayRunsPerGroup": 6,
-  "codeUrl": null,
+  "codeUrl": "https://github.com/emilia113/SpatialHarness",
   "codeStatus": "coming_soon",
   "overviewVideo": "assets/videos/overview.mp4",
   "overviewPoster": "assets/posters/overview.jpg",
