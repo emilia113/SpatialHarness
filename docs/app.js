@@ -56,7 +56,7 @@
     text('[data-task-name]', name);
     text('[data-criterion]', task.criterion);
     text('[data-run-count]', `${group.runs.length} SELECTED RUNS`);
-    text('[data-gallery-note]', `Success rates use all 15 trials in each group. The ${group.runs.length} displayed runs use the nearest achievable success/failure ratio, retaining their original outcome labels.`);
+    text('[data-gallery-note]', `Success rates use all 15 trials in each group. The ${group.runs.length} displayed runs use the nearest achievable success/failure ratio, retaining their original outcome labels. All videos are shown at 8× speed.`);
     document.querySelector('.gallery').setAttribute('aria-label', t.gallery(name, method.name, group.runs.length));
     document.querySelectorAll('.clip').forEach((figure, index) => {
       const run = group.runs[index];
