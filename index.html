@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="SpatialHarness equips a frozen multimodal robot policy with complementary virtual views and an online synchronized scene for fine manipulation.">
+  <meta name="theme-color" content="#f9d85b">
+  <title>SpatialHarness · Test-Time Spatial Scaffolding</title>
+  <link rel="icon" href="assets/spatialharness-logo.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="data.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="site-shell">
+    <header class="site-header">
+      <div class="brand"><img class="brand-mark" src="assets/spatialharness-logo.png" width="1254" height="1254" alt="" aria-hidden="true" decoding="async"><span>SpatialHarness</span></div>
+      <nav class="main-nav" role="tablist" aria-label="Main sections">
+        <button id="nav-overview" type="button" role="tab" aria-selected="true" aria-controls="overview" data-main="overview">Overview</button>
+        <button id="nav-method" type="button" role="tab" aria-selected="false" aria-controls="method" tabindex="-1" data-main="method">Method</button>
+        <button id="nav-demos" type="button" role="tab" aria-selected="false" aria-controls="demos" tabindex="-1" data-main="demos">Demos</button>
+      </nav>
+      <div class="header-tools"><div class="header-note">SPATIAL CONTEXT · FINE MANIPULATION</div></div>
+    </header>
+    <main id="main-content" tabindex="-1">
+      <section id="overview" role="tabpanel" aria-labelledby="nav-overview">
+        <div class="hero">
+          <p class="eyebrow">TEST-TIME SPATIAL SCAFFOLDING</p>
+          <h1><span class="title-brand"><img class="brand-mark" src="assets/spatialharness-logo.png" width="1254" height="1254" alt="" aria-hidden="true" decoding="async"><span class="title-brand-name">SpatialHarness</span></span><br>Test-Time Spatial Scaffolding<br class="wide-only"> for Fine Robotic Manipulation</h1>
+          <p class="authors">Jiayu Wang<sup>1</sup><span>Yue Yu<sup>1</sup></span><span>Bin Zhu<sup>2</sup></span><span>Zhiyao Yang<sup>3</sup></span><span>Jingjing Chen<sup>3,†</sup></span></p>
+          <p class="affiliations"><span><sup>1</sup> College of Computer Science and Artificial Intelligence, Fudan University</span><span><sup>2</sup> Singapore Management University</span><span><sup>3</sup> Institute of Trustworthy Embodied AI, Fudan University</span></p>
+          <p class="correspondence">† Corresponding author</p>
+          <div class="resource-links"><a class="resource primary" href="https://arxiv.org/abs/2610.12457" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a><span class="resource unavailable" aria-disabled="true" title="Code coming soon">Code <span class="resource-note">Coming soon</span></span></div>
+        </div>
+
+        <!-- overview-copy:start -->
+        <section class="content-section article-section" aria-labelledby="overview-heading-0">
+          <div class="article-row">
+            <h2 id="overview-heading-0" data-copy="overview-0-heading">1. Problem Definition</h2>
+            <div class="article-copy">
+              <p data-copy="overview-0-p0">Multimodal foundation models can now generate robot actions directly from visual observations and language instructions, and use execution feedback to adjust subsequent decisions. However, these models still struggle to perform fine manipulation reliably in tasks such as insertion, stacking, and precise placement.</p>
+              <p data-copy="overview-0-p1">We want to ask a question: how can we improve a robot's observations of task-critical spatial relationships at test time to make fine manipulation more reliable, without retraining the policy or changing the existing physical camera setup?</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-section article-section" aria-labelledby="overview-heading-1">
+          <div class="article-row">
+            <h2 id="overview-heading-1" data-copy="overview-1-heading">2. Motivation: Fine Manipulation Requires Sufficient Spatial Evidence</h2>
+            <div class="article-copy">
+              <p data-copy="overview-1-p0">To complete a task, the robot must understand the goal and assess specific geometric relationships. These include whether the plug's position and orientation match the socket, whether an object's hole aligns with the target peg, and whether the gripper has actually grasped the drawer handle. Occlusion or viewing direction can make these relationships hard to discern from fixed cameras, especially when the gripper and object are nearly in contact.</p>
+              <p data-copy="overview-1-p1">Some manipulation failures may therefore result from insufficient spatial evidence. Even when a model has the relevant reasoning and manipulation capabilities, its current observations may not support accurate judgments. We therefore treat spatial observability as a key consideration for embodied harnesses. The aim is to provide the same policy with additional observations that clearly reveal key geometric relationships, allowing it to make fuller use of its existing capabilities.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-section article-section" aria-labelledby="overview-heading-2">
+          <div class="article-row">
+            <h2 id="overview-heading-2" data-copy="overview-2-heading">3. Method Overview: SpatialHarness</h2>
+            <div class="article-copy">
+              <p data-copy="overview-2-p0">At test time, SpatialHarness maintains a simulated scene synchronized with real-world execution and uses it to provide the policy with additional spatial information.</p>
+              <p data-copy="overview-2-p1">Before execution, the system starts from the task's success conditions and identifies the spatial relationships that must be assessed for success. It works backward from these relationships to determine virtual viewpoints that can reveal them. During execution, it continuously updates the scene using measured robot motion and real-world observations. The frozen multimodal policy receives rendered images from the additional viewpoints, object poses, and rendering reliability information. The policy combines these inputs with its existing real-world observations to generate actions, forming a continuously updated closed loop.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-section article-section" aria-labelledby="overview-heading-3">
+          <div class="article-row">
+            <h2 id="overview-heading-3" data-copy="overview-3-heading">4. Experiment Results</h2>
+            <div class="article-copy">
+              <p data-copy="overview-3-p0">We evaluate SpatialHarness on four real-robot tasks: block stacking, plug insertion, Tower of Hanoi, and block in drawer. Both methods use GPT-6 Astra (low reasoning effort) as the policy model, with the same physical camera configuration and control protocol. Each method is evaluated over 15 trials per task. Each trial consists of 20 interaction rounds.</p>
+              <p data-copy="overview-3-p1">With SpatialHarness, the average success rate across the four tasks increases from 18.33% to 83.33%. The success rate for plug insertion increases from 26.67% to 66.67%, while that for Tower of Hanoi increases from 0% to 100%. These results indicate that improving spatial observability at test time can help the same multimodal policy perform fine manipulation more reliably.</p>
+            </div>
+          </div>
+          <figure class="paper-figure results-figure" aria-labelledby="results-figure-heading">
+          <h3 class="results-media-heading" id="results-figure-heading">Success Rates</h3>
+          <a href="assets/figures/main-results.png" target="_blank" rel="noopener" aria-label="Open the full experimental results figure"><img src="assets/figures/main-results.png" width="2200" height="532" alt="15 trials per task and method. Block stacking: 7/15 to 15/15. Plug insertion: 4/15 to 10/15. Tower of Hanoi: 0/15 to 15/15. Block in drawer: 0/15 to 10/15. Overall: 11/60 to 50/60." loading="lazy"></a><figcaption>15 trials for each task and method; 120 trials in total. Figure 4 from the paper. Arrows indicate improvements in percentage points.</figcaption></figure>
+          <div class="overview-demo">
+          <h3 class="results-media-heading" id="results-video-heading">Task Demonstrations</h3>
+          <div class="overview-video-wrap" id="overview-video-wrap"><video controls playsinline muted preload="metadata" src="assets/videos/overview.mp4" poster="assets/posters/overview.jpg" aria-label="Block stacking, plug insertion, Tower of Hanoi, and block in drawer"></video></div>
+          <p class="overview-caption">Excerpts from four tasks. See Demos for complete runs.</p>
+          <button type="button" class="text-link" data-go-demos>Explore full Demos <span aria-hidden="true">↗</span></button>
+          </div>
+        </section>
+        <!-- overview-copy:end -->
+      </section>
+
+      <section id="method" role="tabpanel" aria-labelledby="nav-method" hidden>
+        <header class="page-heading"><p class="eyebrow">SPATIALHARNESS</p><h1>Method</h1></header>
+        <!-- method-copy:start -->
+        <section class="content-section article-section method-framework" aria-labelledby="method-heading-0">
+          <div class="article-row">
+            <h2 id="method-heading-0" data-copy="method-0-heading">1. Overall Workflow</h2>
+            <div class="article-copy">
+              <p data-copy="method-0-p0">SpatialHarness provides a frozen multimodal policy with spatial context corresponding to the current execution state: complementary virtual views, object poses, and rendering reliability information. At each decision step, the policy combines this context with task instructions, real camera observations, robot state, and execution feedback to generate robot actions through tool calls.</p>
+              <p data-copy="method-0-p1">For environment modeling and configuration, the multimodal model builds simulation assets and environments, reasons about spatial constraints, generates programs to check them, and configures virtual viewpoints. As the manipulation policy, the same model generates robot actions. The harness executes these programs, advances the physics simulation, synchronizes the scene using real-world observations, and renders the additional views needed at the next step.</p>
+            </div>
+          </div>
+          <figure class="paper-figure framework-figure"><a href="assets/figures/framework_update.png" target="_blank" rel="noopener" aria-label="Open the full framework figure"><img src="assets/figures/framework_update.png" width="3547" height="2528" alt="SpatialHarness framework: measured robot motion advances the simulation; Static, Held, and Transition states guide updates; complementary virtual views are then rendered. The lower panel shows synchronized real, side, and top views during the Tower of Hanoi task."></a><figcaption>Figure 2 from the paper. Measured robot motion advances the simulation. Interaction-aware correction keeps the scene aligned with real execution before rendering the fixed complementary views.</figcaption></figure>
+        </section>
+        <section class="content-section article-section" aria-labelledby="method-heading-1">
+          <div class="article-row">
+            <h2 id="method-heading-1" data-copy="method-1-heading">2. Interaction-Aware Scene Synchronization</h2>
+            <div class="article-copy">
+              <p data-copy="method-1-p0">The usefulness of complementary virtual views depends on how accurately the simulated scene reflects the real environment. When the scene evolves through physics simulation alone, errors in physical parameters and contact modeling gradually introduce discrepancies, particularly during grasping and release. SpatialHarness therefore combines physics-based prediction with two forms of correction. Visual correction uses real images and depth to assess whether the scene matches the real environment. Programmatic correction uses spatial constraints generated by the model to check or adjust candidate states.</p>
+            </div>
+          </div>
+          <section class="article-subsection" aria-labelledby="method-heading-2">
+          <div class="article-row">
+            <h3 id="method-heading-2" data-copy="method-2-heading">2.1 Asset and Initial State Setup</h3>
+            <div class="article-copy">
+              <p data-copy="method-2-p0">The system first builds CAD models from photographs taken from multiple viewpoints and annotated object dimensions. It renders candidate poses from the real camera's viewing direction and compares their contours and depth with real-world observations, retaining candidates that visually match.</p>
+              <p data-copy="method-2-p1">Matching the overall appearance can still mask local geometric errors. The model derives further spatial constraints from object structure and reference geometry in the scene. For example, the pegs in Tower of Hanoi should be above the support plane. The model generates programs to check, make limited adjustments to, or reject candidate poses. Only candidates that pass both spatial constraint checks and visual validation are accepted. Finally, the system completes scene initialization by aligning the simulated robot's pose and gripper width with the measured state.</p>
+            </div>
+          </div>
+          </section>
+          <section class="article-subsection" aria-labelledby="method-heading-3">
+          <div class="article-row">
+            <h3 id="method-heading-3" data-copy="method-3-heading">2.2 Scene State Updates</h3>
+            <div class="article-copy">
+              <p data-copy="method-3-p0">During execution, the system distinguishes three interaction modes based on the relationship between an object and the gripper: static, continuously held, and transitioning during grasp or release.</p>
+              <p class="interaction-mode mode-static" data-copy="method-3-p1"><strong>Static.</strong> Aligned poses are retained for fixed objects. For objects that can move but are currently stationary, the system applies visual correction using new observations. It then confirms the updated state through spatial constraint checks and visual validation.</p>
+              <p class="interaction-mode mode-held" data-copy="method-3-p2"><strong>Held.</strong> The system starts from the scene aligned at the previous step. It uses measured joint and gripper motion in the physics simulation to predict the current pose of the held object. It then checks visual agreement and the geometric relationship between the object and gripper. If either check fails, the system corrects the pose using observations from the wrist camera.</p>
+              <p class="interaction-mode mode-transition" data-copy="method-3-p3"><strong>Transition.</strong> Small errors in position or orientation before contact can lead to different grasping or release outcomes in simulation. The system therefore starts from the simulation state saved at the pre-interaction checkpoint and constructs multiple pre-interaction pose hypotheses. For each candidate, it performs hypothesis replay using the same segment of measured robot motion to obtain a candidate current state. Candidate selection proceeds in two stages. First, interaction consistency filtering uses visible changes in the real interaction to reject branches with inconsistent grasp or release outcomes. It then uses contour matching to compare renderings of the remaining branches across the entire interaction with real wrist-camera observations and selects the closest match. The system accepts the selected branch's full current simulation state. This allows subsequent simulation and virtual views to keep updating from a state consistent with the real interaction.</p>
+              <p class="rendering-note" data-copy="method-3-p4">During execution, the system marks the current rendering as unreliable if it does not match real-world observations closely enough, for example when contour consistency is low. It sends a corresponding signal to the policy model, indicating that information from rendered views should be used with caution. If the rendered content disagrees with real-world observations, the policy model should rely on the real-world observations.</p>
+            </div>
+          </div>
+          </section>
+        </section>
+        <section class="content-section article-section" aria-labelledby="method-heading-4">
+          <div class="article-row">
+            <h2 id="method-heading-4" data-copy="method-4-heading">3. Task-Oriented View Selection</h2>
+            <div class="article-copy">
+              <p data-copy="method-4-p0">Virtual viewpoints are selected before task execution. The model first identifies success conditions from the task instructions. It then combines these conditions with the objects' 3D structure to infer spatial relationships required for success. These may involve relative object positions and orientations, or how local features such as holes, pegs, and plugs fit together. For tasks that mainly involve relationships between whole objects, the system selects two global viewpoints. For tasks that require observing how local features fit together, it selects one local viewpoint and one global viewpoint. The local view shows detailed geometric relationships, while the global view shows the overall scene.</p>
+              <p data-copy="method-4-p1">After the system renders candidate views, the model checks whether the relevant objects or parts are visible together and whether key relationships are easy to assess. It also checks whether these viewpoints reveal details that are difficult to discern in the real camera views. When needed, the model iteratively adjusts camera positions, orientations, and framing in simulation. It can also simulate relevant object motions to check visibility during critical stages of the operation. The selected virtual viewpoints remain fixed throughout execution, while their rendered content is continuously updated as the scene is synchronized. This provides the policy with spatial information corresponding to the current manipulation state.</p>
+            </div>
+          </div>
+          <!-- View selection figure: awaiting the author's supplied crop of Figure 1. -->
+        </section>
+        <!-- method-copy:end -->
+      </section>
+
+      <section id="demos" role="tabpanel" aria-labelledby="nav-demos" hidden>
+        <div class="demos-heading"><div><p class="eyebrow">REAL-ROBOT RUNS</p><h1>Demos</h1></div><span class="speed-note"><span aria-hidden="true">▶</span> 8× speed</span></div>
+        <div class="method-nav" role="tablist" aria-label="Methods"><button type="button" id="select-baseline" role="tab" aria-selected="false" aria-controls="method-content" tabindex="-1" data-policy="baseline">Baseline</button><button type="button" id="select-ours" role="tab" aria-selected="true" aria-controls="method-content" data-policy="ours">SpatialHarness</button></div>
+        <section id="method-content" role="tabpanel" aria-labelledby="select-ours">
+          <section class="settings" aria-label="Experimental settings for the current task and method"><div class="settings-title"><b>Method settings</b></div><dl class="settings-grid"><div><dt>Execution model</dt><dd data-setting-model></dd></div><div><dt>Observation input</dt><dd data-setting-input></dd></div><div><dt>Success rate</dt><dd data-setting-rate></dd></div><div><dt>Executable steps</dt><dd data-setting-steps></dd></div></dl></section>
+          <div class="explorer">
+            <aside class="sidebar" aria-label="Task sidebar"><p class="sidebar-title">TASKS <span>04</span></p><div class="task-nav" role="tablist" aria-label="Tasks" aria-orientation="vertical"><button type="button" id="task-stack" role="tab" aria-selected="true" aria-controls="task-content" data-task="stack"><span>01</span>Block stacking</button><button type="button" id="task-plug" role="tab" aria-selected="false" aria-controls="task-content" tabindex="-1" data-task="plug"><span>02</span>Plug insertion</button><button type="button" id="task-hanoi" role="tab" aria-selected="false" aria-controls="task-content" tabindex="-1" data-task="hanoi"><span>03</span>Tower of Hanoi</button><button type="button" id="task-drawer" role="tab" aria-selected="false" aria-controls="task-content" tabindex="-1" data-task="drawer"><span>04</span>Block in drawer</button></div></aside>
+            <section id="task-content" role="tabpanel" aria-labelledby="task-stack"><div class="task-heading"><h2 data-task-name></h2><span data-run-count>6 SELECTED RUNS</span></div><p class="criterion" data-criterion></p><div class="gallery" aria-label="Selected runs for the current task and method"></div><p class="gallery-note" data-gallery-note>Success rates use all 15 trials in each group. The 6 displayed runs use the nearest achievable success/failure ratio, retaining their original outcome labels.</p></section>
+          </div>
+        </section>
+      </section>
+    </main>
+    <footer><span>SpatialHarness</span><span data-footer-page>Overview</span></footer>
+    <div class="sr-only" role="status" aria-live="polite" aria-atomic="true" data-status></div>
+  </div>
+  <noscript><p class="noscript">Enable JavaScript to switch sections, tasks, and methods.</p></noscript>
+</body>
+</html>
