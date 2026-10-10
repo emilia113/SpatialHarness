@@ -8,6 +8,7 @@
 @media(max-width:900px){.header-tools{gap:14px}.header-note{display:none}}
 @media(max-width:620px){.site-header{gap:6px 24px}.header-tools{gap:0}.overview-caption{font-size:14px}.task-nav button{font-size:14px;padding:9px 5px}.task-heading>span{padding-top:0}.task-heading h2{font-size:16px}}
 
+.hero-divider{width:72px;height:3px;margin:10px auto 26px;border:0;border-radius:2px;background:var(--yellow)}
 .article-section{padding:42px 0}
 .article-row{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;align-items:start}
 .article-row>h2,.article-row>h3{width:100%;max-width:880px;margin:0 auto;text-align:center;line-height:1.5;overflow-wrap:break-word;text-wrap:pretty}
