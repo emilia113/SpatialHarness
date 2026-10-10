@@ -31,7 +31,7 @@ We evaluate SpatialHarness on four real-robot tasks: **block stacking, plug inse
 
 With SpatialHarness, the average success rate across the four tasks increases from **18.33% to 83.33%**. The success rate for plug insertion increases from 26.67% to 66.67%, while that for Tower of Hanoi increases from 0% to 100%. These results indicate that improving spatial observability at test time can help the same multimodal policy perform fine manipulation more reliably.
 
-### Success Rates
+### Real-world Tasks Evaluation
 
 ![Success rates across four tasks: block stacking 7/15 to 15/15, plug insertion 4/15 to 10/15, Tower of Hanoi 0/15 to 15/15, and block in drawer 0/15 to 10/15. Overall: 11/60 to 50/60.](docs/assets/figures/main-results.png)
 
